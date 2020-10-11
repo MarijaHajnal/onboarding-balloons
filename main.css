@@ -1,0 +1,253 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #1F2525;
+}
+h2 {
+  padding: 4vmin;
+  padding-left: 5vmin;
+  font-size: 3vmin;
+  text-align: left;
+  color: #FAF1FF;
+  font-family: sans-serif;
+}
+/* ANIMATIONS ----------------- */
+/* Animation that makes the hearts pulse */
+@keyframes pulse {
+  0% {
+    opacity: 0.85;
+    transform: rotateX(5deg) rotateY(25deg);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Animate an appearing bubble + appear from different sides */
+@keyframes appear-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -10vmin, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotateY(-30deg);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes appear-side {
+  0% {
+    opacity: 0;
+    transform: translate3d(-10vmin, 0, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotateY(-30deg);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes appear-down {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -10vmin, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotateY(-30deg);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* HEARTS  */
+.purple-heart, .blue-heart, .green-heart, .red-heart,
+.purple-heart::after, .blue-heart::after,.green-heart::after, .red-heart::after {
+  position: absolute;
+  width: 5vmin;
+  height: 5vmin;
+}
+.purple-heart, .blue-heart, .green-heart, .red-heart {
+  border-radius: 50%;
+}
+/* heart lower tip is an edge of a rotated box made with ::after pseudo */
+.purple-heart::after, .blue-heart::after,.green-heart::after, .red-heart::after {
+  content: '';
+  position: absolute;
+  top: 1.7vmin;
+  left: 1.8vmin;
+  transform: rotate(45deg);
+}
+/* hearts colors */
+.purple-heart, .purple-heart::after {
+  background: #8946B0;
+}
+.blue-heart, .blue-heart::after {
+  background: #1876D0;
+}
+.green-heart, .green-heart::after {
+  background: #49A34B;
+}
+.red-heart, .red-heart::after {
+  background: #CC2C2C;
+}
+/* hearts positions + right circle in a heart made with box shadow */
+.purple-heart {
+  top: 40vmin;
+  left: 15vmin;
+  box-shadow: 3.5vmin 0 0 #8946B0;
+}
+.blue-heart {
+  top: 50vmin;
+  left: 80vmin;
+  box-shadow: 3.5vmin 0 0 #1876D0;
+}
+.green-heart {
+  top: 60vmin;
+  left: 13vmin;
+  box-shadow: 3.5vmin 0 0 #49A34B;
+}
+.red-heart {
+  top: 75vmin;
+  left: 30vmin;
+  box-shadow: 3.5vmin 0 0 #CC2C2C;
+}
+/* BUBBLE SHAPE ------------------ */
+/* big bubble circle */
+.purple-bubble, .blue-bubble, .green-bubble, .red-bubble {
+   position: absolute;
+   width: 40vmin;
+   height: 18vmin;
+   border-radius: 49%;
+   font-size: 4vmin;
+   text-align: center;
+   padding: 7vmin;
+   filter: drop-shadow(1.5vmin 1.5vmin 1.5vmin #282E2B);
+}
+.purple-bubble {
+  top: 20vmin;
+  left: 30vmin;
+  color: #4B168E;
+  background: #F1DEF2;
+  display: none;
+  animation: appear-up 400ms forwards;
+}
+.blue-bubble {
+  top: 30vmin;
+  left: 17vmin;
+  color: #0D4EA5;
+  background: #6DB9F7;
+  display: none;
+  animation: appear-side 400ms forwards;
+}
+.green-bubble {
+  top: 40vmin;
+  left: 27vmin;
+  color: #1E6526;
+  background: #A8D8A8;
+  display: none;
+  animation: appear-down 400ms forwards;
+}
+.red-bubble {
+  top: 50vmin;
+  left: 45vmin;
+  color: #A4161E;
+  background: #EC7D80;
+  display: none;
+  animation: appear-down 400ms forwards;
+}
+/* bubble pointer ----------------------- */
+.purple-bubble::before, .blue-bubble::before,
+.green-bubble::before, .red-bubble::before {
+  content: '';
+  position: absolute;
+  width: 10vmin;
+  height: 9vmin;
+  border-radius: 50%;
+  background: transparent;
+}
+.purple-bubble::before {
+  top: 15vmin;
+  left: -7vmin;
+  box-shadow: 3vmin 1vmin 0 #F1DEF2;
+  transform: rotate(20deg);
+}
+.blue-bubble::before {
+  top: 12vmin;
+  right: -9vmin;
+  box-shadow: -3vmin 2vmin 0 #6DB9F7;
+  transform: rotate(0deg);
+}
+.green-bubble::before {
+  top: 16vmin;
+  left: -6vmin;
+  box-shadow: 3vmin 2vmin 0 #A8D8A8;
+  transform: rotate(0deg);
+}
+.red-bubble::before {
+  top: 17vmin;
+  left: -6vmin;
+  box-shadow: 2vmin -2vmin 0 #EC7D80;
+  transform: rotate(80deg);
+}
+
+/* BUTTONS----------------------- */
+.start-btn{
+  display: block;
+  margin-left: 5vmin;
+  margin-top: 2vmin;
+  text-align: center;
+  padding: 1vmin;
+  width: 30vmin;
+  background: #FEFCE9;
+  border-radius: 5%;
+  color: #413848;
+  font-size: 3.5vmin;
+  box-shadow: 0.5vmin 0.5vmin 1vmin #2E2832;
+  animation: appear-up 400ms forwards;
+}
+.purple-btn, .blue-btn, .green-btn, .red-btn{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vmin;
+  width: 12vmin;
+  height: 3vmin;
+  border-radius:30%;
+  padding: 1vmin;
+  font-size: 3vmin;
+  text-align: center;
+  vertical-align: middle;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+}
+.purple-btn {
+  background: #FAF1FF;
+  color: #43007A;
+  box-shadow: 0.5vmin 0.5vmin 0.8vmin #43007A, -0.3vmin -0.3vmin 0.5vmin #fff;
+}
+.blue-btn {
+  background: #BADBFA;
+  color: #1047A1;
+  box-shadow: 0.5vmin 0.5vmin 0.8vmin #1047A1, -0.3vmin -0.3vmin 0.5vmin #fff;
+}
+.green-btn {
+  background: #E3F4E4;
+  color: #206524;
+  box-shadow: 0.5vmin 0.5vmin 0.8vmin #206524, -0.3vmin -0.3vmin 0.5vmin #fff;
+}
+.red-btn {
+  background: #FDCFD2;
+  color: #A4161E;
+  box-shadow: 0.5vmin 0.5vmin 0.8vmin #A4161E, -0.3vmin -0.3vmin 0.5vmin #fff;
+}
+.purple-btn:hover, .blue-btn:hover, .green-btn:hover, .red-btn:hover{
+  opacity: 0.7;
+}
+.purple-btn:active, .blue-btn:active, .green-btn:active, .red-btn:active{
+  box-shadow: inset 0.5vmin 0.5vmin 0.5vmin #5E5A62;
+}
